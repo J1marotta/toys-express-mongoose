@@ -6,7 +6,7 @@ const { ToysController } = require('../controllers/index');
 const router = express.Router();
 const controller = new ToysController();
 
-router.use(bodyParser.urlencoded({ extended: false }));
+router.use(bodyParser.urlencoded({ extended: true }));
 router.use((req, res, next) => {
   console.log(`req.body=${util.inspect(req.body)}`);
   next();

@@ -17,7 +17,7 @@ module.exports = class ToysController {
   }
 
   create(req, res) {
-    const toy = new Toy(req.body);
+    const toy = new Toy(req.body.toy);
     const fault = (err) => res.status(400);
     const redirect = (toy) => res.redirect('/toys');
     toy.save().then(redirect).catch(fault);
