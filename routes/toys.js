@@ -1,16 +1,20 @@
-const express = require('express')
-let router = express.Router()
+const express = require('express');
+const util = require('util');
+const { ToysController } = require('../controllers/index');
+
+const router = express.Router();
+const toysController = new ToysController();
 
 router.get('/toys', (req, res) => {
-  res.render('toys/index');
+  toysController.index(req, res);
 });
 
 router.get('/toys/:id', (req, res) => {
-  res.send(`GET Toys#show id=${req.params.id}`);
+  toysController.show(req, res);
 });
 
 router.post('/toys', (req, res) => {
-  res.send('This is a POST\n');
+  toysController.create(req, res);
 });
 
 module.exports = router;
