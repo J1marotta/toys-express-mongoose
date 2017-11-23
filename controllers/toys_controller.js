@@ -9,7 +9,11 @@ module.exports = class ToysController {
     res.send(`GET toys#show id=${req.params.id}\n`);
   }
 
+  new(req, res) {
+    res.render('toys/new');
+  }
+
   create(req, res) {
-    res.send(`POST toys#create\n`);
+    res.redirect('/toys');
   }
 }
