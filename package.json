@@ -9,6 +9,6 @@
     "nodemon": "^1.12.1"
   },
   "scripts": {
-    "start": "nodemon --exec node server.js"
+    "start": "nodemon --exec node app.js"
   }
 }
