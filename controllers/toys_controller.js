@@ -1,8 +1,11 @@
-var Toy = require('../models/toy');
+const util = require('util');
+const Toy = require('../models/toy');
 
 module.exports = class ToysController {
   index(req, res) {
-    res.render('toys/index');
+    Toy.find()
+      .then(toys => { console.log(util.inspect(toys)); res.render('toys/index', { toys: toys })})
+      .catch(err => { res.render('toys/index', { error: 'not foound '})})
   }
 
   show(req, res) {
@@ -14,6 +17,9 @@ module.exports = class ToysController {
   }
 
   create(req, res) {
-    res.redirect('/toys');
+    const toy = new Toy(req.body);
+    const fault = (err) => res.status(400);
+    const redirect = (toy) => res.redirect('/toys');
+    toy.save().then(redirect).catch(fault);
   }
 }

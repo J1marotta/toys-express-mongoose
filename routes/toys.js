@@ -7,6 +7,10 @@ const router = express.Router();
 const controller = new ToysController();
 
 router.use(bodyParser.urlencoded({ extended: false }));
+router.use((req, res, next) => {
+  console.log(`req.body=${util.inspect(req.body)}`);
+  next();
+});
 
 router.get('/toys', (req, res) => {
   controller.index(req, res);
