@@ -12,9 +12,10 @@ router.use((req, res, next) => {
   next();
 });
 
-router.get('/toys', controller.index);
-router.get('/toys/new', controller.new);
-router.get('/toys/:id', controller.show);
-router.post('/toys', controller.create);
+router
+  .get('/toys', controller.index)
+  .get('/toys/new', controller.new)
+  .get('/toys/:id', controller.show)
+  .post('/toys', controller.create);
 
 module.exports = router;
