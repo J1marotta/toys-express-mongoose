@@ -12,20 +12,9 @@ router.use((req, res, next) => {
   next();
 });
 
-router.get('/toys', (req, res) => {
-  controller.index(req, res);
-});
-
-router.get('/toys/new', (req, res) => {
-  controller.new(req, res);
-});
-
-router.get('/toys/:id', (req, res) => {
-  controller.show(req, res);
-});
-
-router.post('/toys', (req, res) => {
-  controller.create(req, res);
-});
+router.get('/toys', controller.index);
+router.get('/toys/new', controller.new);
+router.get('/toys/:id', controller.show);
+router.post('/toys', controller.create);
 
 module.exports = router;
